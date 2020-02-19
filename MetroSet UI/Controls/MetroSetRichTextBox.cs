@@ -1,24 +1,24 @@
 ﻿/**
 * MetroSet UI - MetroSet UI Framewrok
-* 
+*
 * The MIT License (MIT)
 * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the "Software"), to deal in the 
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in the
+* Software without restriction, including without limitation the rights to use, copy,
+* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so, subject to the
 * following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in 
+*
+* The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -177,7 +177,6 @@ namespace MetroSet_UI.Controls
             T.Enter += T_Enter;
             T.KeyDown += T_KeyDown;
             T.TextChanged += T_TextChanged;
-
         }
 
         #endregion Constructors
@@ -204,6 +203,7 @@ namespace MetroSet_UI.Controls
                                 case MouseMode.Normal:
                                     G.DrawRectangle(p, rect);
                                     break;
+
                                 case MouseMode.Hovered:
                                     G.DrawRectangle(ph, rect);
                                     break;
@@ -231,7 +231,6 @@ namespace MetroSet_UI.Controls
 
             T.Location = new Point(7, 4);
             T.Width = Width - 10;
-
         }
 
         #endregion Draw Control
@@ -312,6 +311,7 @@ namespace MetroSet_UI.Controls
                         }
                     UpdateProperties();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -345,7 +345,6 @@ namespace MetroSet_UI.Controls
         public event ProtectedEventHandler Protected;
 
         public delegate void ProtectedEventHandler(object sender, EventArgs e);
-
 
         /// <summary>
         /// Handling richtextbox selection changed event and raising the same event here.
@@ -736,7 +735,6 @@ namespace MetroSet_UI.Controls
             return T.CanPaste(clipFormat);
         }
 
-
         /// <summary>
         /// Searches the text of the control for the first instance of a character from a list of characters.
         /// </summary>
@@ -855,8 +853,6 @@ namespace MetroSet_UI.Controls
             }
         }
 
-
-
         /// <summary>
         /// Gets or sets the background color of the control.
         /// </summary>
@@ -887,7 +883,6 @@ namespace MetroSet_UI.Controls
                 Invalidate();
             }
         }
-
 
         /// <summary>
         /// Gets or sets the border color of the control.
@@ -1065,6 +1060,5 @@ namespace MetroSet_UI.Controls
         public Color DisabledBorderColor { get; set; } = Color.FromArgb(155, 155, 155);
 
         #endregion Properties
-
     }
 }

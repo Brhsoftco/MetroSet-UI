@@ -199,6 +199,7 @@ namespace MetroSet_UI.Controls
                         }
                     UpdateProperties();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -230,6 +231,7 @@ namespace MetroSet_UI.Controls
             get;
             set;
         } = 200;
+
         /// <summary>
         /// Get or set slide animate easing type
         /// </summary>
@@ -379,6 +381,7 @@ namespace MetroSet_UI.Controls
                         }
                     }
                     break;
+
                 case TabStyle.Style2:
 
                     for (var i = 0; i <= TabCount - 1; i++)
@@ -398,10 +401,10 @@ namespace MetroSet_UI.Controls
                         }
                     }
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
         }
 
         #endregion Draw Control
@@ -480,7 +483,7 @@ namespace MetroSet_UI.Controls
             {
                 c.Hide();
             }
-            
+
             _slideAnimator.Update = (alpha) =>
             {
                 _slideGraphics.DrawImage(_slideBitmap, alpha);
@@ -575,7 +578,6 @@ namespace MetroSet_UI.Controls
             }
         }
 
-        #endregion
-
+        #endregion Methods
     }
 }

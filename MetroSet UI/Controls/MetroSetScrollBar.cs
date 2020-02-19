@@ -1,24 +1,24 @@
 ﻿/**
 * MetroSet UI - MetroSet UI Framewrok
-* 
+*
 * The MIT License (MIT)
 * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the "Software"), to deal in the 
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in the
+* Software without restriction, including without limitation the rights to use, copy,
+* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so, subject to the
 * following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in 
+*
+* The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -43,7 +43,6 @@ namespace MetroSet_UI.Controls
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetScrollBar : Control, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -139,10 +138,9 @@ namespace MetroSet_UI.Controls
             SetDefaults();
             _utl = new Utilites();
             ApplyTheme();
-
         }
 
-        void SetDefaults()
+        private void SetDefaults()
         {
             _minimum = 0;
             _maximum = 100;
@@ -188,7 +186,6 @@ namespace MetroSet_UI.Controls
                         {
                             switch (varkey.Key)
                             {
-
                                 case "ForeColor":
                                     ForeColor = _utl.HexColor((string)varkey.Value);
                                     break;
@@ -211,6 +208,7 @@ namespace MetroSet_UI.Controls
                         }
                     UpdateProperties();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -221,7 +219,7 @@ namespace MetroSet_UI.Controls
             Invalidate();
         }
 
-        #endregion Theme Changing
+        #endregion ApplyTheme
 
         #region Draw Control
 
@@ -241,7 +239,7 @@ namespace MetroSet_UI.Controls
             }
         }
 
-        #endregion
+        #endregion Draw Control
 
         #region Properties
 
@@ -266,7 +264,6 @@ namespace MetroSet_UI.Controls
                 InvalidateLayout();
             }
         }
-
 
         /// <summary>
         /// Gets or sets the upper limit of the scrollable range.
@@ -302,7 +299,6 @@ namespace MetroSet_UI.Controls
             }
         }
 
-
         /// <summary>
         /// Gets or sets a numeric value that represents the current position of the scroll bar box.
         /// </summary>
@@ -329,13 +325,11 @@ namespace MetroSet_UI.Controls
             }
         }
 
-
         /// <summary>
         /// Gets or sets the distance to move a scroll bar in response to a small scroll command.
         /// </summary>
         [Category("MetroSet Framework"), Description("Gets or sets the distance to move a scroll bar in response to a small scroll command.")]
         public int SmallChange { get; set; } = 1;
-
 
         /// <summary>
         /// Gets or sets the distance to move a scroll bar in response to a large scroll command.
@@ -373,7 +367,7 @@ namespace MetroSet_UI.Controls
         [Category("MetroSet Framework"), Description("Gets or sets disabled backcolor used by the control.")]
         public Color DisabledBackColor { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Events
 
@@ -395,10 +389,12 @@ namespace MetroSet_UI.Controls
                     if (_showThumb)
                         _thumb = new Rectangle(0, 0, Width, _thumbSize);
                     break;
+
                 case ScrollOrientate.Horizontal:
                     if (_showThumb)
                         _thumb = new Rectangle(0, 0, Width, _thumbSize);
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -408,6 +404,7 @@ namespace MetroSet_UI.Controls
         }
 
         public event ScrollEventHandler Scroll;
+
         public delegate void ScrollEventHandler(object sender);
 
         /// <summary>
@@ -420,6 +417,7 @@ namespace MetroSet_UI.Controls
                 case ScrollOrientate.Vertical:
                     _thumb.Y = Convert.ToInt32(CurrentValue() * (_bar.Height - _thumbSize));
                     break;
+
                 case ScrollOrientate.Horizontal:
                     _thumb.X = Convert.ToInt32(CurrentValue() * (_bar.Width - _thumbSize));
                     break;
@@ -447,9 +445,11 @@ namespace MetroSet_UI.Controls
                 case ScrollOrientate.Vertical:
                     _val = e.Y < _thumb.Y ? Value - LargeChange : Value + LargeChange;
                     break;
+
                 case ScrollOrientate.Horizontal:
                     _val = e.X < _thumb.X ? Value - LargeChange : Value + LargeChange;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -480,13 +480,13 @@ namespace MetroSet_UI.Controls
                     thumbBounds = _bar.Width - _thumbSize;
                     _val = Convert.ToInt32((double)thumbPosition / thumbBounds * (Maximum - Minimum)) - Minimum;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
             Value = Math.Min(Math.Max(_val, Minimum), Maximum);
             InvalidatePosition();
-
         }
 
         /// <summary>
@@ -501,9 +501,11 @@ namespace MetroSet_UI.Controls
                 case ScrollOrientate.Vertical:
                     _thumbState = (e.Location.Y < 16) | (e.Location.Y > Width - 16) ? MouseMode.Hovered : MouseMode.Normal;
                     break;
+
                 case ScrollOrientate.Horizontal:
                     _thumbState = e.Location.X < 16 | e.Location.X > Width - 16 ? MouseMode.Hovered : MouseMode.Normal;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -529,10 +531,6 @@ namespace MetroSet_UI.Controls
             return (double)(Value - Minimum) / (Maximum - Minimum);
         }
 
-        #endregion
-
+        #endregion Events
     }
-
-
-
 }

@@ -1,24 +1,24 @@
 ﻿/**
 * MetroSet UI - MetroSet UI Framewrok
-* 
+*
 * The MIT License (MIT)
 * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the "Software"), to deal in the 
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in the
+* Software without restriction, including without limitation the rights to use, copy,
+* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so, subject to the
 * following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in 
+*
+* The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -42,7 +42,6 @@ namespace MetroSet_UI.Controls
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetControlBox : Control, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -229,7 +228,7 @@ namespace MetroSet_UI.Controls
             Invalidate();
         }
 
-        #endregion Theme Changing
+        #endregion ApplyTheme
 
         #region Properties
 
@@ -308,14 +307,14 @@ namespace MetroSet_UI.Controls
         public Color DisabledForeColor { get; set; }
 
         /// <summary>
-        /// I make backcolor inaccessible cause we have not use of it. 
+        /// I make backcolor inaccessible cause we have not use of it.
         /// </summary>
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public override Color BackColor => Color.Transparent;
 
-        #endregion
+        #endregion Public
 
-        #region Private 
+        #region Private
 
         private bool MinimizeHovered { get; set; }
 
@@ -323,9 +322,9 @@ namespace MetroSet_UI.Controls
 
         private bool CloseHovered { get; set; }
 
-        #endregion
+        #endregion Private
 
-        #endregion
+        #endregion Properties
 
         #region Draw Control
 
@@ -377,10 +376,9 @@ namespace MetroSet_UI.Controls
                     }
                 }
             }
-
         }
 
-        #endregion
+        #endregion Draw Control
 
         #region Events
 
@@ -450,7 +448,6 @@ namespace MetroSet_UI.Controls
             {
                 if (MinimizeBox)
                     Parent.FindForm().WindowState = FormWindowState.Minimized;
-
             }
             else if (MaximizeHovered)
             {
@@ -485,7 +482,6 @@ namespace MetroSet_UI.Controls
             Focus();
         }
 
-        #endregion
-
+        #endregion Events
     }
 }

@@ -1,24 +1,24 @@
 ﻿/**
 * MetroSet UI - MetroSet UI Framewrok
-* 
+*
 * The MIT License (MIT)
 * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the "Software"), to deal in the 
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in the
+* Software without restriction, including without limitation the rights to use, copy,
+* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so, subject to the
 * following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in 
+*
+* The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -44,7 +44,6 @@ namespace MetroSet_UI.Controls
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetEllipse : Control, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -79,6 +78,22 @@ namespace MetroSet_UI.Controls
                 Invalidate();
             }
         }
+
+        private ImageSet images = null;
+
+        [Category("MetroSet Framework"), Description("Gets or sets the ImageSet (focused, unfocused Images) associated with the control.")]
+        public ImageSet ImageSet
+        {
+            get
+            {
+                return images;
+            }
+            set
+            {
+                images = value;
+                this.Image = images.Idle;
+            }
+        }   
 
         /// <summary>
         /// Gets or sets the The Author name associated with the theme.
@@ -139,6 +154,20 @@ namespace MetroSet_UI.Controls
             ApplyTheme();
         }
 
+        private void focusHandler()
+        {
+            if (this.images != null)
+                if (this.images.Focus != null)
+                    this.Image = this.images.Focus;
+        }
+
+        private void idleHandler()
+        {
+            if (this.images != null)
+                if (this.images.Idle != null)
+                    this.Image = this.images.Idle;
+        }
+
         #endregion Constructors
 
         #region Draw Control
@@ -162,7 +191,7 @@ namespace MetroSet_UI.Controls
                         G.DrawEllipse(p, r);
                         G.DrawString(Text, Font, tb, new Rectangle(0, 0, Width, Height), _mth.SetPosition());
                     }
-
+                    idleHandler();
                     break;
 
                 case MouseMode.Hovered:
@@ -176,7 +205,7 @@ namespace MetroSet_UI.Controls
                         G.DrawEllipse(p, r);
                         G.DrawString(Text, Font, tb, new Rectangle(0, 0, Width, Height), _mth.SetPosition());
                     }
-
+                    focusHandler();
                     break;
 
                 case MouseMode.Pushed:
@@ -189,7 +218,7 @@ namespace MetroSet_UI.Controls
                         G.DrawEllipse(p, r);
                         G.DrawString(Text, Font, tb, new Rectangle(0, 0, Width, Height), _mth.SetPosition());
                     }
-
+                    focusHandler();
                     break;
 
                 case MouseMode.Disabled:
@@ -201,8 +230,9 @@ namespace MetroSet_UI.Controls
                         G.DrawEllipse(p, r);
                         G.DrawString(Text, Font, tb, new Rectangle(0, 0, Width, Height), _mth.SetPosition());
                     }
-
+                    idleHandler();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -319,17 +349,18 @@ namespace MetroSet_UI.Controls
                         }
                     Refresh();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
         }
 
-        #endregion Theme Changing
+        #endregion ApplyTheme
 
         #region Properties
 
         /// <summary>
-        /// I make backcolor inaccessible cause we have not use of it. 
+        /// I make backcolor inaccessible cause we have not use of it.
         /// </summary>
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public override Color BackColor => Color.Transparent;
@@ -454,8 +485,7 @@ namespace MetroSet_UI.Controls
         [Description("Gets or sets the border color of the control while disabled.")]
         public Color DisabledBorderColor { get; set; }
 
-
-        #endregion
+        #endregion Properties
 
         #region Events
 
@@ -504,6 +534,5 @@ namespace MetroSet_UI.Controls
         }
 
         #endregion Events
-
     }
 }

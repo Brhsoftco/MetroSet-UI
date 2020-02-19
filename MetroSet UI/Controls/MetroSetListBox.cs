@@ -46,7 +46,6 @@ namespace MetroSet_UI.Controls
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetListBox : Control, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -229,7 +228,6 @@ namespace MetroSet_UI.Controls
                         {
                             switch (varkey.Key)
                             {
-
                                 case "ForeColor":
                                     ForeColor = _utl.HexColor((string)varkey.Value);
                                     break;
@@ -272,6 +270,7 @@ namespace MetroSet_UI.Controls
                         }
                     UpdateProperties();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -343,7 +342,6 @@ namespace MetroSet_UI.Controls
                                                     G.DrawString(itemText, Font, sic, rect, sf);
                                                 }
                                             }
-
                                         }
                                         if (ShowBorder)
                                             G.DrawRectangle(Pens.LightGray, mainRect);
@@ -667,7 +665,6 @@ namespace MetroSet_UI.Controls
                         SelectedIndex = index;
                         SelectedIndexChanged?.Invoke(this);
                         SelectedValueChanged?.Invoke(this);
-
                     }
                 }
                 Invalidate();
@@ -817,6 +814,5 @@ namespace MetroSet_UI.Controls
         }
 
         #endregion Events
-
     }
 }

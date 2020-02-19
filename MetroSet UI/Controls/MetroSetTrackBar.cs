@@ -1,24 +1,24 @@
 ﻿/**
 * MetroSet UI - MetroSet UI Framewrok
-* 
+*
 * The MIT License (MIT)
 * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the "Software"), to deal in the 
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in the
+* Software without restriction, including without limitation the rights to use, copy,
+* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so, subject to the
 * following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in 
+*
+* The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+* PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -42,7 +42,6 @@ namespace MetroSet_UI.Controls
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetTrackBar : Control, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -179,7 +178,6 @@ namespace MetroSet_UI.Controls
                         {
                             switch (varkey.Key)
                             {
-
                                 case "HandlerColor":
                                     HandlerColor = _utl.HexColor((string)varkey.Value);
                                     break;
@@ -210,6 +208,7 @@ namespace MetroSet_UI.Controls
                         }
                     UpdateProperties();
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -220,7 +219,7 @@ namespace MetroSet_UI.Controls
             Invalidate();
         }
 
-        #endregion Theme Changing
+        #endregion ApplyTheme
 
         #region Draw Control
 
@@ -245,7 +244,7 @@ namespace MetroSet_UI.Controls
             }
         }
 
-        #endregion
+        #endregion Draw Control
 
         #region Properties
 
@@ -350,11 +349,12 @@ namespace MetroSet_UI.Controls
         [Category("MetroSet Framework"), Description("Gets or sets the handler color while the control disabled.")]
         public Color DisabledHandlerColor { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Events
 
         public event ScrollEventHandler Scroll;
+
         public delegate void ScrollEventHandler(object sender);
 
         /// <summary>
@@ -407,7 +407,6 @@ namespace MetroSet_UI.Controls
                 {
                     Value -= 1;
                 }
-
             }
             else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Up || e.KeyCode == Keys.Right)
             {
@@ -415,7 +414,6 @@ namespace MetroSet_UI.Controls
                 {
                     Value += 1;
                 }
-
             }
             base.OnKeyDown(e);
         }
@@ -450,7 +448,6 @@ namespace MetroSet_UI.Controls
             Invalidate();
         }
 
-        #endregion
-
+        #endregion Events
     }
 }
