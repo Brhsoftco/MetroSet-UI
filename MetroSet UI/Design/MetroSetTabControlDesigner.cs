@@ -22,7 +22,6 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 using MetroSet_UI.Child;
 using MetroSet_UI.Controls;
 using MetroSet_UI.Native;
@@ -50,9 +49,7 @@ namespace MetroSet_UI.Design
 
         #endregion Instance Members
 
-        #region Constructor
 
-        #endregion Constructor
 
         #region Property
 

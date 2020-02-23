@@ -1,24 +1,24 @@
 ﻿/**
  * MetroSet UI - MetroSet UI Framewrok
- * 
+ *
  * The MIT License (MIT)
  * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of 
- * this software and associated documentation files (the "Software"), to deal in the 
- * Software without restriction, including without limitation the rights to use, copy, 
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in the
+ * Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in 
+ *
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
@@ -42,7 +42,6 @@ namespace MetroSet_UI
     [ToolboxBitmap(typeof(StyleManager), "Style.bmp")]
     public class StyleManager : Component
     {
-
         #region Constructor
 
         public StyleManager(System.Windows.Forms.Form ownerForm)
@@ -61,7 +60,7 @@ namespace MetroSet_UI
             EvaluateDicts();
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Methods
 
@@ -74,6 +73,7 @@ namespace MetroSet_UI
             {
                 case null:
                     return;
+
                 case iForm form when CustomTheme != null:
                     form.Style = Style;
                     form.ThemeAuthor = ThemeAuthor;
@@ -126,7 +126,6 @@ namespace MetroSet_UI
                     ((iControl)child).StyleManager = this;
                     ((iControl)child).ThemeAuthor = ThemeAuthor;
                     ((iControl)child).ThemeName = ThemeName;
-
                 }
             }
         }
@@ -149,7 +148,7 @@ namespace MetroSet_UI
             }
         }
 
-        #endregion
+        #endregion Methods
 
         #region Internal Vars
 
@@ -172,7 +171,6 @@ namespace MetroSet_UI
         /// </summary>
         [Category("MetroSet Framework"), Description("Gets or sets the The Theme name associated with the theme.")]
         public string ThemeName { get; set; }
-
 
         /// <summary>
         /// Gets or sets the form (MetroForm) to Apply themes for.
@@ -206,6 +204,7 @@ namespace MetroSet_UI
                         ThemeAuthor = "Narwin";
                         ThemeName = "MetroLite";
                         break;
+
                     case Style.Dark:
                         ThemeAuthor = "Narwin";
                         ThemeName = "MetroDark";
@@ -215,7 +214,6 @@ namespace MetroSet_UI
                 UpdateForm();
             }
         }
-
 
         /// <summary>
         /// Gets or sets the custom theme file controls.
@@ -409,10 +407,9 @@ namespace MetroSet_UI
         /// </summary>
         public Dictionary<string, object> ListBoxDictionary;
 
+        #endregion Declartions
 
-        #endregion
-
-        #region Methods 
+        #region Methods
 
         private void Clear()
         {
@@ -444,7 +441,7 @@ namespace MetroSet_UI
             ListBoxDictionary.Clear();
         }
 
-        #endregion
+        #endregion Methods
 
         #region Evaluate
 
@@ -477,9 +474,9 @@ namespace MetroSet_UI
             ListBoxDictionary = new Dictionary<string, object>();
         }
 
-        #endregion
+        #endregion Evaluate
 
-        #endregion
+        #endregion Dictionaries
 
         #region Reader
 
@@ -548,9 +545,7 @@ namespace MetroSet_UI
             ThemeDetailsReader(path);
 
             UpdateForm();
-
         }
-
 
         /// <summary>
         /// The Method get the custom theme name and author.
@@ -569,9 +564,8 @@ namespace MetroSet_UI
             }
         }
 
-
         /// <summary>
-        /// The Method to load the custom xml theme file and add a childnodes from a specific node into a dectionary. 
+        /// The Method to load the custom xml theme file and add a childnodes from a specific node into a dectionary.
         /// </summary>
         /// <param name="path">The Path of custom theme file (XML file).</param>
         /// <param name="nodename">The Node name to get the childnodes from.</param>
@@ -597,7 +591,6 @@ namespace MetroSet_UI
                 return null;
             }
         }
-
 
         #endregion Reader
 
@@ -630,7 +623,6 @@ namespace MetroSet_UI
             }
         }
 
-        #endregion
-
+        #endregion UITypeEditor
     }
 }

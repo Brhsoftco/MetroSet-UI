@@ -1,24 +1,24 @@
 ﻿/**
  * MetroSet UI - MetroSet UI Framewrok
- * 
+ *
  * The MIT License (MIT)
  * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of 
- * this software and associated documentation files (the "Software"), to deal in the 
- * Software without restriction, including without limitation the rights to use, copy, 
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in the
+ * Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in 
+ *
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
@@ -33,14 +33,12 @@ using System.Windows.Forms;
 
 namespace MetroSet_UI.Components
 {
-
     [ToolboxItem(true)]
     [ToolboxBitmap(typeof(MetroSetToolTip), "Bitmaps.ToolTip.bmp")]
     [Designer(typeof(MetroSetToolTipDesigner))]
     [DefaultEvent("Popup")]
     public class MetroSetToolTip : ToolTip, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -128,7 +126,6 @@ namespace MetroSet_UI.Components
 
         #region Draw Control
 
-
         private void OnDraw(object sender, DrawToolTipEventArgs e)
         {
             var G = e.Graphics;
@@ -146,10 +143,9 @@ namespace MetroSet_UI.Components
                     }
                 }
             }
-
         }
 
-        #endregion
+        #endregion Draw Control
 
         #region ApplyTheme
 
@@ -184,7 +180,6 @@ namespace MetroSet_UI.Components
                         {
                             switch (varkey.Key)
                             {
-
                                 case "BackColor":
                                     BackColor = _utl.HexColor((string)varkey.Value);
                                     break;
@@ -202,6 +197,7 @@ namespace MetroSet_UI.Components
                             }
                         }
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(style), style, null);
             }
@@ -217,7 +213,6 @@ namespace MetroSet_UI.Components
         [Browsable(false)]
         public new bool ShowAlways { get; } = false;
 
-
         /// <summary>
         /// Gets or sets a value indicating whether the ToolTip is drawn by the operating system or by code that you provide.
         /// </summary>
@@ -228,13 +223,11 @@ namespace MetroSet_UI.Components
             set => base.OwnerDraw = true;
         }
 
-
         /// <summary>
         /// Gets or sets a value indicating whether the ToolTip should use a balloon window.
         /// </summary>
         [Browsable(false)]
         public new bool IsBalloon { get; } = false;
-
 
         /// <summary>
         /// Gets or sets the background color for the ToolTip.
@@ -242,13 +235,11 @@ namespace MetroSet_UI.Components
         [Browsable(false)]
         public new Color BackColor { get; set; }
 
-
         /// <summary>
         /// Gets or sets the foreground color for the ToolTip.
         /// </summary>
         [Category("MetroSet Framework"), Description("Gets or sets the foreground color for the ToolTip.")]
         public new Color ForeColor { get; set; }
-
 
         /// <summary>
         /// Gets or sets a title for the ToolTip window.
@@ -256,13 +247,11 @@ namespace MetroSet_UI.Components
         [Category("MetroSet Framework"), Description("Gets or sets a title for the ToolTip window.")]
         public new string ToolTipTitle { get; } = string.Empty;
 
-
         /// <summary>
         /// Defines a set of standardized icons that can be associated with a ToolTip.
         /// </summary>
         [Browsable(false)]
         public new ToolTipIcon ToolTipIcon { get; } = ToolTipIcon.None;
-
 
         /// <summary>
         /// Gets or sets the border color for the ToolTip.
@@ -270,7 +259,7 @@ namespace MetroSet_UI.Components
         [Category("MetroSet Framework"), Description("Gets or sets the border color for the ToolTip.")]
         public Color BorderColor { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Methods
 
@@ -289,9 +278,9 @@ namespace MetroSet_UI.Components
             }
         }
 
-        #endregion
+        #endregion Methods
 
-        #region Events 
+        #region Events
 
         /// <summary>
         /// Here we handle popup event and we set the style of controls for tooltip.
@@ -318,7 +307,6 @@ namespace MetroSet_UI.Components
             e.ToolTipSize = new Size(e.ToolTipSize.Width + 30, e.ToolTipSize.Height + 6);
         }
 
-        #endregion
-
+        #endregion Events
     }
 }

@@ -92,6 +92,7 @@ namespace MetroSet_UI.Controls
             {
                 images = value;
                 this.Image = images.Idle;
+                Invalidate();
             }
         }   
 

@@ -22,7 +22,6 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 using System.Windows.Forms.Design;
 
 namespace MetroSet_UI.Design

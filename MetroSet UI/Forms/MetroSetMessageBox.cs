@@ -1,24 +1,24 @@
 ﻿/**
  * MetroSet UI - MetroSet UI Framewrok
- * 
+ *
  * The MIT License (MIT)
  * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of 
- * this software and associated documentation files (the "Software"), to deal in the 
- * Software without restriction, including without limitation the rights to use, copy, 
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in the
+ * Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in 
+ *
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
@@ -34,7 +34,6 @@ namespace MetroSet_UI.Forms
 {
     public class MetroSetMessageBox : MetroSetForm
     {
-
         #region Internal vars
 
         private Size _buttonSize;
@@ -46,7 +45,7 @@ namespace MetroSet_UI.Forms
         private MetroDefaultSetButton _abortButton;
         private MetroDefaultSetButton _ignoreButton;
 
-        #endregion
+        #endregion Internal vars
 
         #region Properties
 
@@ -67,7 +66,7 @@ namespace MetroSet_UI.Forms
 
         /// <summary>
         /// Gets or sets the MessageBoxButtons.
-        /// </summary> 
+        /// </summary>
         public MessageBoxButtons Buttons { get; set; }
 
         /// <summary>
@@ -96,8 +95,7 @@ namespace MetroSet_UI.Forms
         [EditorBrowsable(EditorBrowsableState.Never)]
         private static Color ForegroundColor { get; set; }
 
-
-        #endregion
+        #endregion Properties
 
         #region Constructor
 
@@ -107,6 +105,7 @@ namespace MetroSet_UI.Forms
         private MetroSetMessageBox() : base()
         {
             Font = MetroSetFonts.Regular(9.5f);
+            ForeColor = Color.White;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             _buttonSize = new Size(95, 32);
@@ -230,7 +229,6 @@ namespace MetroSet_UI.Forms
                 Text = "Abort",
                 Size = _buttonSize,
                 Visible = false
-
             };
             _abortButton.Click += AbortButton_Click;
         }
@@ -249,7 +247,7 @@ namespace MetroSet_UI.Forms
             _ignoreButton.Click += IgnoreButton_Click;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Events
 
@@ -377,42 +375,39 @@ namespace MetroSet_UI.Forms
                 Caption = caption,
                 Buttons = buttons,
                 Size = new Size(form.Width - 2, (form.Height / 3) - 1),
-                Location = new Point(form.Location.X, (form.Height / 2) - 1)
+                Location = new Point(form.Location.X, (form.Height / 2) - 1),
+                DropShadowEffect = false
             };
 
             if (icon == MessageBoxIcon.Error || icon == MessageBoxIcon.Stop)
             {
                 BackgroundColor = Color.FromArgb(210, 50, 45);
                 BorderColor = Color.FromArgb(210, 50, 45);
-                ForegroundColor = Color.Black;
+                ForegroundColor = Color.White;
             }
-
             else if (icon == MessageBoxIcon.Information)
             {
                 BackgroundColor = Color.FromArgb(60, 180, 218);
                 BorderColor = Color.FromArgb(60, 180, 218);
                 ForegroundColor = Color.White;
             }
-
             else if (icon == MessageBoxIcon.Question)
             {
                 BackgroundColor = Color.FromArgb(70, 165, 70);
                 BorderColor = Color.FromArgb(70, 165, 70);
-                ForegroundColor = Color.Black;
+                ForegroundColor = Color.White;
             }
-
             else if (icon == MessageBoxIcon.Exclamation || icon == MessageBoxIcon.Warning)
             {
                 BackgroundColor = Color.FromArgb(237, 156, 40);
                 BorderColor = Color.FromArgb(237, 156, 40);
-                ForegroundColor = Color.Black;
+                ForegroundColor = Color.White;
             }
-
             else if (icon == MessageBoxIcon.None || icon == MessageBoxIcon.Asterisk || icon == MessageBoxIcon.Hand)
             {
                 BackgroundColor = Color.White;
                 BorderColor = Color.FromArgb(65, 177, 225);
-                ForegroundColor = Color.Black;
+                ForegroundColor = Color.White;
             }
 
             return msgBox.ShowDialog();
@@ -424,7 +419,6 @@ namespace MetroSet_UI.Forms
         /// <returns>The MessageBox with provided buttons.</returns>
         protected new DialogResult ShowDialog()
         {
-
             var buttonHeight = Height - 45;
             var firstButton = (Width - _buttonSize.Width) - 10;
             var secondButoon = (Width - (_buttonSize.Width * 2)) - 20;
@@ -482,7 +476,7 @@ namespace MetroSet_UI.Forms
             return base.ShowDialog();
         }
 
-        #endregion
+        #endregion Events
 
         #region Draw Dialog
 
@@ -508,7 +502,18 @@ namespace MetroSet_UI.Forms
             }
         }
 
-        #endregion
+        #endregion Draw Dialog
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // MetroSetMessageBox
+            // 
+            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Name = "MetroSetMessageBox";
+            this.ResumeLayout(false);
+
+        }
     }
 }

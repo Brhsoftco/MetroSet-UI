@@ -18,15 +18,20 @@ namespace MetroSet_UI.Animates
         public MethodInvoker Complete { get; set; }
 
         #region Internal Vars
+
         // a bad way to record time...
         private DateTime _lastUpdateTime;
+
         // I use timer instead of thread, so you can modify control without Control.Invoke
         private Timer _animateTimer;
+
         // reverse animate
         private bool _reverse;
-        #endregion
+
+        #endregion Internal Vars
 
         #region Constructors
+
         // choose best interval for yourself
         public Animate(int updateInterval = 16)
         {
@@ -39,9 +44,11 @@ namespace MetroSet_UI.Animates
             _reverse = false;
             Alpha = 0.0;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Functions
+
         // just set once, and use start, back or reverse to play animate
         public void Setting(int duration, T initial, T end, EasingType easing = EasingType.Linear)
         {
@@ -135,9 +142,11 @@ namespace MetroSet_UI.Animates
             Setting(duration, initial, end, easing);
             Back();
         }
-        #endregion
+
+        #endregion Functions
 
         #region Events
+
         // process frame
         private void OnFrameUpdate(object sender, EventArgs e)
         {
@@ -151,7 +160,7 @@ namespace MetroSet_UI.Animates
 
             _lastUpdateTime = updateTime;
             Alpha = Math.Max(0.0, Math.Min(Alpha + (_reverse ? -elapsed : elapsed), 1.0));
-            
+
             Update?.Invoke(Value);
 
             if (Alpha == 0.0 || Alpha == 1.0)
@@ -160,13 +169,15 @@ namespace MetroSet_UI.Animates
                 Complete?.Invoke();
             }
         }
-        #endregion
+
+        #endregion Events
 
         #region Properties
+
         // progress. value between 0 and 1
         public double Alpha { get; set; }
 
-        // animate duration 
+        // animate duration
         //     recorded for calculating elapsed alpha
         //     if you use reverse animate when animate avtiving
         //     the real duration will different with the duration you set
@@ -188,13 +199,16 @@ namespace MetroSet_UI.Animates
 
         // store you own variable here
         public object Tag { get; set; }
-        #endregion
+
+        #endregion Properties
 
         #region Dispose
+
         public void Dispose()
         {
             _animateTimer.Dispose();
         }
-        #endregion
+
+        #endregion Dispose
     }
 }

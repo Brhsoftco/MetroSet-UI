@@ -1,24 +1,24 @@
 ﻿/**
  * MetroSet UI - MetroSet UI Framewrok
- * 
+ *
  * The MIT License (MIT)
  * Copyright (c) 2017 Narwin, https://github.com/N-a-r-w-i-n
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of 
- * this software and associated documentation files (the "Software"), to deal in the 
- * Software without restriction, including without limitation the rights to use, copy, 
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in the
+ * Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in 
+ *
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
@@ -49,7 +49,6 @@ namespace MetroSet_UI.Forms
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     public class MetroSetForm : Form, iForm
     {
-
         #region Properties
 
         /// <summary>
@@ -151,7 +150,6 @@ namespace MetroSet_UI.Forms
         /// </summary>
         [Category("MetroSet Framework"), Description("Gets or sets the title alignment.")]
         public TextAlign TextAlign { get; set; } = TextAlign.Left;
-
 
         /// <summary>
         /// Gets or sets whether show the header.
@@ -291,7 +289,6 @@ namespace MetroSet_UI.Forms
             _showHeader = false;
             AllowResize = true;
             ApplyTheme();
-
         }
 
         #endregion Constructor
@@ -300,7 +297,6 @@ namespace MetroSet_UI.Forms
 
         protected override void OnPaint(PaintEventArgs e)
         {
-
             e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
             e.Graphics.InterpolationMode = InterpolationMode.High;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
@@ -367,6 +363,7 @@ namespace MetroSet_UI.Forms
                                 e.Graphics.DrawString(Text, Font, textBrush, new Rectangle(20, 0, Width - 26, HeaderHeight), stringFormat);
                             }
                             break;
+
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -391,7 +388,7 @@ namespace MetroSet_UI.Forms
             var y = (int)((message.LParam.ToInt64() & -65536) >> 0x10);
             var point = PointToClient(new Point(x, y));
 
-            #region  From Corners  
+            #region From Corners
 
             if (point.Y >= Height - 0x10)
             {
@@ -422,7 +419,7 @@ namespace MetroSet_UI.Forms
                 }
             }
 
-            #endregion
+            #endregion From Corners
 
             #region From Sides
 
@@ -449,7 +446,7 @@ namespace MetroSet_UI.Forms
                 message.Result = (IntPtr)0xb;
             }
 
-            #endregion
+            #endregion From Sides
         }
 
         #endregion Methods
@@ -479,6 +476,7 @@ namespace MetroSet_UI.Forms
                     case Style.Custom:
                         ApplyTheme(Style.Custom);
                         break;
+
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
@@ -625,7 +623,7 @@ namespace MetroSet_UI.Forms
             Invalidate();
         }
 
-        #endregion Theme Changing
+        #endregion ApplyTheme
 
         #region Events
 
@@ -645,9 +643,7 @@ namespace MetroSet_UI.Forms
 
             // Allow users to resize the form.
             ResizeForm(ref message);
-
         }
-
 
         protected override void OnHandleCreated(EventArgs e)
         {
@@ -696,8 +692,6 @@ namespace MetroSet_UI.Forms
             }
         }
 
-        #endregion
-
+        #endregion Events
     }
-
 }

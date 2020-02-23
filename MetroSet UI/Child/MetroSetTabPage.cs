@@ -22,7 +22,6 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 using MetroSet_UI.Design;
 using MetroSet_UI.Extensions;
 using MetroSet_UI.Interfaces;
@@ -35,7 +34,6 @@ namespace MetroSet_UI.Child
     [Designer(typeof(MetroSetTabPageDesigner))]
     public class MetroSetTabPage : TabPage, iControl
     {
-
         #region Interfaces
 
         /// <summary>
@@ -197,7 +195,6 @@ namespace MetroSet_UI.Child
             }
         }
 
-        #endregion
-
+        #endregion DrawControl
     }
 }
